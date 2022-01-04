@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="常用函数 1234567echo()						输出一个或多个字符串。.()								并置运算符，用于把两个字符串值连接起来。strlen()					返回字符串的长度（字节数），中文字符串的处理使用 mb_strlen() 函数。strpos()					返回字符串在另一字符串中第一次出现的位置（大小写敏感）。ord()							返回字符串中第一个字符的 ASCII 值。md5()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/12/09/php%E5%AD%A6%E4%B9%A0/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="常用函数 1234567echo()						输出一个或多个字符串。.()								并置运算符，用于把两个字符串值连接起来。strlen()					返回字符串的长度（字节数），中文字符串的处理使用 mb_strlen() 函数。strpos()					返回字符串在另一字符串中第一次出现的位置（大小写敏感）。ord()							返回字符串中第一个字符的 ASCII 值。md5()">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-09T03:19:40.000Z">
+<meta property="article:modified_time" content="2021-12-09T03:41:59.700Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/12/09/php%E5%AD%A6%E4%B9%A0/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/09/php%E5%AD%A6%E4%B9%A0/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-12-09 11:19:40 / Modified: 11:41:59" itemprop="dateCreated datePublished" datetime="2021-12-09T11:19:40+08:00">2021-12-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>常用函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo()						输出一个或多个字符串。</span><br><span class="line">.()								并置运算符，用于把两个字符串值连接起来。</span><br><span class="line">strlen()					返回字符串的长度（字节数），中文字符串的处理使用 mb_strlen() 函数。</span><br><span class="line">strpos()					返回字符串在另一字符串中第一次出现的位置（大小写敏感）。</span><br><span class="line">ord()							返回字符串中第一个字符的 ASCII 值。</span><br><span class="line">md5()							计算字符串的 MD5 散列。</span><br><span class="line">htmlentities()		把字符转换为 HTML 实体。</span><br></pre></td></tr></table></figure>
+
+<p>实例：<br><strong>echo()</strong><br>输出一个或多个字符串。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello world!</span><br></pre></td></tr></table></figure>
+
+<p><strong>.()</strong><br>并置运算符，用于把两个字符串值连接起来。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$txt1</span>=<span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line"><span class="variable">$txt2</span>=<span class="string">&quot;What a nice day!&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$txt1</span> . <span class="string">&quot; &quot;</span> . <span class="variable">$txt2</span>;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello world! What a nice day! </span><br></pre></td></tr></table></figure>
+
+<p><strong>strlen()</strong><br>返回字符串的长度（字节数），中文字符串的处理使用 mb_strlen() 函数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> strlen(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">12 </span><br></pre></td></tr></table></figure>
+
+<p><strong>strpos()</strong><br>返回字符串在另一字符串中第一次出现的位置（大小写敏感）。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> strpos(<span class="string">&quot;Hello world!&quot;</span>,<span class="string">&quot;world&quot;</span>);</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6 </span><br></pre></td></tr></table></figure>
+
+<p><strong>ord()</strong><br>返回字符串中第一个字符的 ASCII 值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> ord(<span class="string">&quot;h&quot;</span>).<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> ord(<span class="string">&quot;hello&quot;</span>).<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">104</span><br><span class="line">104</span><br></pre></td></tr></table></figure>
+
+<p><strong>md5()</strong><br>计算字符串的 MD5 散列。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$str</span> = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> md5(<span class="variable">$str</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8b1a9953c4611296a827abf8c47804d7</span><br></pre></td></tr></table></figure>
+
+<p><strong>htmlentities()</strong><br>把字符转换为 HTML 实体。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$str</span> = <span class="string">&quot;&lt;© W3CSçh°°¦§&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> htmlentities(<span class="variable">$str</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;lt;&amp;copy; W3CS&amp;ccedil;h&amp;deg;&amp;deg;&amp;brvbar;&amp;sect;&amp;gt;</span><br></pre></td></tr></table></figure>
+
+<p>具体参考<a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-ref-string.html">https://www.runoob.com/php/php-ref-string.html</a></p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-addcslashes.html">addcslashes()</a></td>
+<td>返回在指定的字符前添加反斜杠的字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-addslashes.html">addslashes()</a></td>
+<td>返回在预定义的字符前添加反斜杠的字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-bin2hex.html">bin2hex()</a></td>
+<td>把 ASCII 字符的字符串转换为十六进制值。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-chop.html">chop()</a></td>
+<td>移除字符串右侧的空白字符或其他字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-chr.html">chr()</a></td>
+<td>从指定 ASCII 值返回字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-chunk-split.html">chunk_split()</a></td>
+<td>把字符串分割为一连串更小的部分。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-convert-cyr-string.html">convert_cyr_string()</a></td>
+<td>把字符串由一种 Cyrillic 字符集转换成另一种。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-convert-uudecode.html">convert_uudecode()</a></td>
+<td>对 uuencode 编码的字符串进行解码。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-convert-uuencode.html">convert_uuencode()</a></td>
+<td>使用 uuencode 算法对字符串进行编码。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-count-chars.html">count_chars()</a></td>
+<td>返回字符串所用字符的信息。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-crc32.html">crc32()</a></td>
+<td>计算一个字符串的 32 位 CRC（循环冗余校验）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-crypt.html">crypt()</a></td>
+<td>单向的字符串加密法（hashing）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-echo.html">echo()</a></td>
+<td>输出一个或多个字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-explode.html">explode()</a></td>
+<td>把字符串打散为数组。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-fprintf.html">fprintf()</a></td>
+<td>把格式化的字符串写入到指定的输出流。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-get-html-translation-table.html">get_html_translation_table()</a></td>
+<td>返回 htmlspecialchars() 和 htmlentities() 使用的翻译表。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-hebrev.html">hebrev()</a></td>
+<td>把希伯来（Hebrew）文本转换为可见文本。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-hebrevc.html">hebrevc()</a></td>
+<td>把希伯来（Hebrew）文本转换为可见文本，并把新行（\n）转换为 <br>。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-hex2bin.html">hex2bin()</a></td>
+<td>把十六进制值的字符串转换为 ASCII 字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-html-entity-decode.html">html_entity_decode()</a></td>
+<td>把 HTML 实体转换为字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-htmlentities.html">htmlentities()</a></td>
+<td>把字符转换为 HTML 实体。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-htmlspecialchars-decode.html">htmlspecialchars_decode()</a></td>
+<td>把一些预定义的 HTML 实体转换为字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-htmlspecialchars.html">htmlspecialchars()</a></td>
+<td>把一些预定义的字符转换为 HTML 实体。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-implode.html">implode()</a></td>
+<td>返回一个由数组元素组合成的字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-join.html">join()</a></td>
+<td>implode() 的别名。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-lcfirst.html">lcfirst()</a></td>
+<td>把字符串中的首字符转换为小写。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-levenshtein.html">levenshtein()</a></td>
+<td>返回两个字符串之间的 Levenshtein 距离。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-localeconv.html">localeconv()</a></td>
+<td>返回本地数字及货币格式信息。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-ltrim.html">ltrim()</a></td>
+<td>移除字符串左侧的空白字符或其他字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-md5.html">md5()</a></td>
+<td>计算字符串的 MD5 散列。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-md5-file.html">md5_file()</a></td>
+<td>计算文件的 MD5 散列。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-metaphone.html">metaphone()</a></td>
+<td>计算字符串的 metaphone 键。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-money-format.html">money_format()</a></td>
+<td>返回格式化为货币字符串的字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-nl-langinfo.html">nl_langinfo()</a></td>
+<td>返回指定的本地信息。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-nl2br.html">nl2br()</a></td>
+<td>在字符串中的每个新行之前插入 HTML 换行符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-number-format.html">number_format()</a></td>
+<td>通过千位分组来格式化数字。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-ord.html">ord()</a></td>
+<td>返回字符串中第一个字符的 ASCII 值。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-parse-str.html">parse_str()</a></td>
+<td>把查询字符串解析到变量中。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-print.html">print()</a></td>
+<td>输出一个或多个字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-printf.html">printf()</a></td>
+<td>输出格式化的字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-quoted-printable-decode.html">quoted_printable_decode()</a></td>
+<td>把 quoted-printable 字符串转换为 8 位字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-quoted-printable-encode.html">quoted_printable_encode()</a></td>
+<td>把 8 位字符串转换为 quoted-printable 字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-quotemeta.html">quotemeta()</a></td>
+<td>引用元字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-rtrim.html">rtrim()</a></td>
+<td>移除字符串右侧的空白字符或其他字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-setlocale.html">setlocale()</a></td>
+<td>设置地区信息（地域信息）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-sha1.html">sha1()</a></td>
+<td>计算字符串的 SHA-1 散列。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-sha1-file.html">sha1_file()</a></td>
+<td>计算文件的 SHA-1 散列。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-similar-text.html">similar_text()</a></td>
+<td>计算两个字符串的相似度。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-soundex.html">soundex()</a></td>
+<td>计算字符串的 soundex 键。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-sprintf.html">sprintf()</a></td>
+<td>把格式化的字符串写入一个变量中。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-sscanf.html">sscanf()</a></td>
+<td>根据指定的格式解析来自一个字符串的输入。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-str-getcsv.html">str_getcsv()</a></td>
+<td>把 CSV 字符串解析到数组中。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-str-ireplace.html">str_ireplace()</a></td>
+<td>替换字符串中的一些字符（大小写不敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-str-pad.html">str_pad()</a></td>
+<td>把字符串填充为新的长度。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-str-repeat.html">str_repeat()</a></td>
+<td>把字符串重复指定的次数。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-str-replace.html">str_replace()</a></td>
+<td>替换字符串中的一些字符（大小写敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-str-rot13.html">str_rot13()</a></td>
+<td>对字符串执行 ROT13 编码。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-str-shuffle.html">str_shuffle()</a></td>
+<td>随机地打乱字符串中的所有字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-str-split.html">str_split()</a></td>
+<td>把字符串分割到数组中。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-str-word-count.html">str_word_count()</a></td>
+<td>计算字符串中的单词数。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strcasecmp.html">strcasecmp()</a></td>
+<td>比较两个字符串（大小写不敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strchr.html">strchr()</a></td>
+<td>查找字符串在另一字符串中的第一次出现。（strstr() 的别名。）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strcmp.html">strcmp()</a></td>
+<td>比较两个字符串（大小写敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strcoll.html">strcoll()</a></td>
+<td>比较两个字符串（根据本地设置）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strcspn.html">strcspn()</a></td>
+<td>返回在找到任何指定的字符之前，在字符串查找的字符数。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strip-tags.html">strip_tags()</a></td>
+<td>剥去字符串中的 HTML 和 PHP 标签。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-stripcslashes.html">stripcslashes()</a></td>
+<td>删除由 addcslashes() 函数添加的反斜杠。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-stripslashes.html">stripslashes()</a></td>
+<td>删除由 addslashes() 函数添加的反斜杠。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-stripos.html">stripos()</a></td>
+<td>返回字符串在另一字符串中第一次出现的位置（大小写不敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-stristr.html">stristr()</a></td>
+<td>查找字符串在另一字符串中第一次出现的位置（大小写不敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strlen.html">strlen()</a></td>
+<td>返回字符串的长度。中文字符串的处理使用 <a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-mb_strlen.html">mb_strlen() 函数</a>。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strnatcasecmp.html">strnatcasecmp()</a></td>
+<td>使用一种”自然排序”算法来比较两个字符串（大小写不敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strnatcmp.html">strnatcmp()</a></td>
+<td>使用一种”自然排序”算法来比较两个字符串（大小写敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strncasecmp.html">strncasecmp()</a></td>
+<td>前 n 个字符的字符串比较（大小写不敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strncmp.html">strncmp()</a></td>
+<td>前 n 个字符的字符串比较（大小写敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strpbrk.html">strpbrk()</a></td>
+<td>在字符串中搜索指定字符中的任意一个。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strpos.html">strpos()</a></td>
+<td>返回字符串在另一字符串中第一次出现的位置（大小写敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strrchr.html">strrchr()</a></td>
+<td>查找字符串在另一个字符串中最后一次出现。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strrev.html">strrev()</a></td>
+<td>反转字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strripos.html">strripos()</a></td>
+<td>查找字符串在另一字符串中最后一次出现的位置(大小写不敏感)。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strrpos.html">strrpos()</a></td>
+<td>查找字符串在另一字符串中最后一次出现的位置(大小写敏感)。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strspn.html">strspn()</a></td>
+<td>返回在字符串中包含的特定字符的数目。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strstr.html">strstr()</a></td>
+<td>查找字符串在另一字符串中的第一次出现（大小写敏感）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strtok.html">strtok()</a></td>
+<td>把字符串分割为更小的字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strtolower.html">strtolower()</a></td>
+<td>把字符串转换为小写字母。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strtoupper.html">strtoupper()</a></td>
+<td>把字符串转换为大写字母。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strtr.html">strtr()</a></td>
+<td>转换字符串中特定的字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-substr.html">substr()</a></td>
+<td>返回字符串的一部分。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-mb_substr.html">mb_substr()</a></td>
+<td>返回中文字符串的一部分。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-substr-compare.html">substr_compare()</a></td>
+<td>从指定的开始位置（二进制安全和选择性区分大小写）比较两个字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-substr-count.html">substr_count()</a></td>
+<td>计算子串在字符串中出现的次数。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-substr-replace.html">substr_replace()</a></td>
+<td>把字符串的一部分替换为另一个字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-trim.html">trim()</a></td>
+<td>移除字符串两侧的空白字符和其他字符。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-ucfirst.html">ucfirst()</a></td>
+<td>把字符串中的首字符转换为大写。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-ucwords.html">ucwords()</a></td>
+<td>把字符串中每个单词的首字符转换为大写。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-vfprintf.html">vfprintf()</a></td>
+<td>把格式化的字符串写到指定的输出流。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-vprintf.html">vprintf()</a></td>
+<td>输出格式化的字符串。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-vsprintf.html">vsprintf()</a></td>
+<td>把格式化字符串写入变量中。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-wordwrap.html">wordwrap()</a></td>
+<td>按照指定长度对字符串进行折行处理。</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/09/php%E5%AD%A6%E4%B9%A0/php5%E5%B8%B8%E9%87%8F/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/09/php%E5%AD%A6%E4%B9%A0/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
